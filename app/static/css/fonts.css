@@ -1,0 +1,46 @@
+/* ===== Setup Font ===== */
+
+/* 
+1. Poppins
+2. Open Sans
+*/
+
+/* Font Poppins */
+@font-face {
+    font-family: 'Poppins';
+    src: url('/static/fonts/Poppins/Poppins-Regular.ttf');
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Poppins';
+    src: url('/static/fonts/Poppins/Poppins-SemiBold.ttf');
+    font-weight: 600;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Poppins';
+    src: url('/static/fonts/Poppins/Poppins-Bold.ttf');
+    font-weight: 700;
+    font-style: normal;
+}
+
+/* Font Open Sans */
+@font-face {
+    font-family: 'Open Sans';
+    src: url('/static/fonts/Open_Sans/OpenSans-VariableFont_wdth,wght.ttf');
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Open Sans';
+    src: url('/static/fonts/Open_Sans/OpenSans-VariableFont_wdth,wght.ttf');
+    font-weight: 600;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Open Sans';
+    src: url('/static/fonts/Open_Sans/OpenSans-VariableFont_wdth,wght.ttf');
+    font-weight: 700;
+    font-style: normal;
+}
