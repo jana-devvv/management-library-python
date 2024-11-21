@@ -1,35 +1,53 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h2>List Books <a href="{{ url_for('add_book') }}">Add</a></h2>
+<div class="home-description">
+    <h1>Library Management System</h1>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis provident architecto enim quidem cumque blanditiis aperiam, voluptatem dolorum maxime inventore error. Fuga nam dicta corporis dolore dolores vel! Tenetur, vitae!</p>
+</div>
 
-<form method="GET" action="{{ url_for('home') }}">
-    <input type="text" name="search" value="{{ search_query }}" placeholder="Search book...">
-    <button type="submit">Search</button>
-</form>
+<div class="home-cards">
+    <h3>List Books <a class="btn-add" href="{{ url_for('add_book') }}">Add</a></h3>
+    
+    <!-- Search Bar -->
+    <form id="home-search" method="GET" action="{{ url_for('home') }}">
+        <div class="search-bar">
+            <input type="text" name="search" value="{{ searcg_query }}" placeholder="Search book..." />
+            <button type="submit">Search</button>
+        </div>
+    </form>
 
-<ul>
-    {% for book in books.items %}
-    <li>
-        {{ book.title }} - {{ book.author }} {{ book.year }}
-        <a href="{{ url_for('loan_book', book_id=book.id) }}">Loan</a>
-        <a href="{{ url_for('edit_book', book_id=book.id) }}">Edit</a>
-        <a href="{{ url_for('delete_book', book_id=book.id) }}" onclick="return confirm('Are you sure?')">Delete</a>
-    </li>
-    {% else %}
-    <li>The book is empty.</li>
-    {% endfor %}
-</ul>
-
-<div>
-    <span>Page {{ books.page }} of {{ books.pages }}</span>
-    <div>
-        {% if books.has_prev %}
-        <a href="{{ url_for('home', page=books.prev_num) }}">Prev</a>
-        {% endif %}
-        {% if books.has_next %}
-        <a href="{{ url_for('home', page=books.next_num) }}">Next</a>
-        {% endif %}
+    
+    <!-- Cards -->
+    <ul class="card-list">
+        {% for book in books.items %}
+            <li class="card">
+                <div class="card-info">
+                    <h3>{{ book.title }}</h3>
+                    <p>Author: {{ book.author }}</p>
+                    <p>Year: {{ book.year }}</p>
+                </div>
+                <div class="card-actions">
+                    <a href="{{ url_for('loan_book', book_id=book.id) }}" class="btn borrow">Loan</a>
+                    <a href="{{ url_for('edit_book', book_id=book.id) }}" class="btn edit">Edit</a>
+                    <a href="{{ url_for('delete_book', book_id=book.id) }}" class="btn delete" onclick="return confirm('Are you sure?')">Delete</a>
+                </div>
+            </li>
+        {% else %}
+            <li class="empty">The book is empty.</li>
+        {% endfor %}
+    </ul>
+    
+    <!-- Pagination -->
+    <div class="pagination">
+        <span>Page {{ books.page }} of {{ books.pages }}</span>
+        <div class="pagination-links">
+            <!-- Simulasi tombol disabled dengan class -->
+            <a href="{{ url_for('home', page=books.prev_num) }}" 
+               class="btn prev {% if not books.has_prev %}disabled{% endif %}">Prev</a>
+            <a href="{{ url_for('home', page=books.next_num) }}" 
+               class="btn next {% if not books.has_next %}disabled{% endif %}">Next</a>
+        </div>
     </div>
 </div>
 {% endblock %}
