@@ -1,8 +1,12 @@
-{% extends "base.html" %}
+{% extends "auth.html" %}
+
+{% block style %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/auth.css') }}">
+{% endblock %}
 
 {% block content %}
-<h2>Login Account</h2>
-<form method="POST" action="{{ url_for('login') }}">
+<h2 class="title-auth">Login Account</h2>
+<form id="form-auth" method="POST" action="{{ url_for('login') }}">
     {{ form.hidden_tag() }}
     <p>
         {{ form.username.label }}

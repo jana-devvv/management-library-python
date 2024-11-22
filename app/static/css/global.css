@@ -1,0 +1,397 @@
+:root {
+    /* COLOR */
+    --primary-color: #6C63FF;
+    --secondary-color: #FF6584;
+    --bg-light-color: #FFFFFF;
+    --bg-dark-color: #1E1E2F;
+    --text-light-color: #333333;
+    --text-dark-color: #E0E0E0;
+    --success-color: #28C76F;
+    --info-color: #00CFE8;
+    --warning-color: #FF9F43;
+    --danger-color: #EA5455;
+    --light-color: #F8F9FA;
+    --dark-color: #343A40;
+    --disabled-color: #e4e4e4;
+    --disabled-text-color: #B0B0B0;
+    --border-color: #CCCCCC;
+
+
+    /* SPACING */
+    --space-0: 0;           /* 0px  */
+    --space-1: 0.25rem;     /* 4px  */
+    --space-2: 0.5rem;      /* 8px  */
+    --space-3: 0.75rem;     /* 12px */
+    --space-4: 1rem;        /* 16px */
+    --space-5: 1.25rem;     /* 20px */
+    --space-6: 1.5rem;      /* 24px */
+    --space-7: 1.75rem;     /* 28px */
+    --space-8: 2rem;        /* 32px */
+    --space-9: 3rem;        /* 48px */
+    --space-10: 4rem;       /* 64px */
+}
+
+html, body {
+    margin: var(--space-0);
+    padding: var(--space-0);
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-light-color);
+    font-size: 16px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+}
+
+p, a, li, span, div, input {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+}
+
+.main-content {
+    padding: var(--space-2) var(--space-4);
+}
+
+/* ==================== BUTTON ==================== */
+.btn {
+    display: inline-block;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: var(--space-2) var(--space-4);
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    border-radius: 0.25rem;
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    opacity: 0.9;
+}
+
+.btn-sm {
+    padding: var(--space-1) var(--space-2);
+    font-size: 0.875rem;
+}
+
+.btn-lg {
+    padding: var(--space-3) var(--space-6);
+    font-size: 1.25rem;
+}
+
+.btn-block {
+    display: block;
+    width: 100%;
+}
+
+.btn-disabled {
+    background-color: var(--disabled-color);
+    color: var(--disabled-text-color);
+    pointer-events: none;
+    cursor: not-allowed;
+}
+
+.btn-success {
+    background-color: var(--success-color);
+    color: var(--light-color);
+}
+.btn-info {
+    background-color: var(--info-color);
+    color: var(--light-color);
+}
+.btn-warning {
+    background-color: var(--warning-color);
+    color: var(--light-color);
+}
+.btn-danger {
+    background-color: var(--danger-color);
+    color: var(--light-color);
+}
+.btn-light {
+    background-color: var(--light-color);
+    color: var(--dark-color);
+}
+.btn-dark {
+    background-color: var(--dark-color);
+    color: var(--light-color);
+}
+
+/* ==================== NAVBAR ==================== */
+.navbar {
+    background-color: var(--primary-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-1) var(--space-4);
+}
+
+/* Logo Brand */
+.navbar .navbar-brand {
+    font-size: 1rem;
+    color: var(--text-light-color);
+}
+
+/* Link */
+.navbar .navbar-nav .nav-links {
+    display: none;
+}
+
+/* Hamburger Button */
+.navbar .navbar-nav .hamburger {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.navbar .navbar-nav .hamburger span {
+    width: 25px;
+    height: 4px;
+    background: var(--text-light-color);
+    margin: 2px 0;
+}
+
+/* ==================== OVERLAY ==================== */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    display: none;
+}
+
+.overlay.active {
+    display: block;
+}
+
+/* ==================== SIDEBAR ==================== */
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    height: 100%;
+    width: 60%;
+    background: var(--primary-color);
+    color: var(--text-light-color);
+    /* padding: 0 var(--space-6); */
+    transition: 0.5s ease-in-out;
+    z-index: 1000;
+}
+
+.sidebar.active {
+    right: 0;
+}
+
+/* Title */
+.sidebar .sidebar-title {
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+/* Links */
+.sidebar .sidebar-links {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.sidebar .sidebar-links li {
+    list-style: none;
+    font-size: 1.2rem;
+}
+
+.sidebar .sidebar-links li:nth-child(4) a {
+    display: inline-block;
+    margin: 1.5rem 0;
+    padding: 0.625rem 1.25rem;
+    color: #FFFFFF;
+    background-color: #ff0d00;
+    border-radius: 5px;
+    font-size: 1rem;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.sidebar .sidebar-links li:nth-child(4) a:hover {
+    background-color: #e00b00;
+}
+
+.sidebar .sidebar-links li a {
+    text-decoration: none;
+    color: var(--text-light-color);
+}
+
+/* ==================== FOOTER ==================== */
+.footer {
+    background-color: var(--bg-dark-color);
+    color: var(--text-dark-color);
+    padding: var(--space-5) var(--space-4);
+    font-size: 0.85rem;
+    margin-top: 2rem;
+}
+
+.footer-container {
+    display: grid;
+    grid-template-columns: 1fr; /* Default: Single column for small screens */
+    gap: var(--space-5);
+    margin: var(--space-0) auto;
+}
+
+/* Footer Sections */
+.footer-section {
+    margin-bottom: var(--space-5);
+}
+
+.footer-section h4 {
+    font-size: 1.25rem;
+    margin-bottom: 0.625rem;
+    color: var(--light-color);
+}
+
+.footer-section p,
+.footer-section ul,
+.footer-section .social-icons {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.footer-section ul li {
+    margin: var(--space-1) var(--space-0);
+}
+
+.footer-section ul li a,
+.footer-section .social-icons a {
+    color: var(--text-dark-color);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-section ul li a:hover,
+.footer-section .social-icons a:hover {
+    color: var(--text-dark-color);
+}
+
+/* Social Icons */
+.social-icons {
+    display: flex;
+    gap: var(--space-3);
+}
+
+/* Footer Bottom */
+.footer-bottom {
+    text-align: center;
+    margin-top: var(--space-5);
+    border-top: 1px solid #444;
+    padding-top: var(--space-3);
+    font-size: 0.75rem;
+    color: var(--text-dark-color);
+    opacity: 0.7;
+}
+
+/* ==================== RESPONSIVE BREAKPOINTS ====================  */
+/* Tablet 768px */
+@media (min-width: 768px) {
+    .main-content {
+        padding: var(--space-3) var(--space-6);
+    }
+
+    .navbar .navbar-brand {
+        font-size: 1.25rem;
+    }    
+
+    .navbar .navbar-nav {
+        display: flex;
+    }
+
+    .navbar .navbar-nav .nav-links {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        column-gap: var(--space-6);
+        list-style: none;
+    }
+
+    .navbar .navbar-nav .nav-links li a {
+        position: relative;
+        padding: var(--space-2) var(--space-0);
+        font-weight: 600;
+        border-radius: 8px;
+        font-size: 1rem;
+        text-decoration: none;
+        color: var(--text-dark-color);
+    }
+
+    .navbar .navbar-nav .nav-links li:nth-child(4) a {
+        padding: var(--space-3) var(--space-5);
+    }
+
+    .navbar .navbar-nav .nav-links li a::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 5px;
+        transition: width 0.3s ease;
+    }
+
+    .navbar .navbar-nav .nav-links li a.active::after {
+        width: 100%;
+        background-color: var(--secondary-color);
+    }
+
+    .navbar .navbar-nav .hamburger {
+        display: none;
+    }
+
+    .sidebar {
+        right: -100% !important;
+    }
+
+    .overlay {
+        display: none !important;
+    }
+
+    .footer-container {
+        grid-template-columns: repeat(3, 1fr); /* 3 columns for larger screens */
+    }
+}
+
+/* Dekstop 1024px */
+@media (min-width: 1024px) {
+    .main-content {
+        padding: var(--space-4) var(--space-8);
+    }
+
+    .navbar .navbar-brand {
+        font-size: 1.5rem;
+    }
+
+    .navbar .navbar-nav .nav-links li a {
+        font-size: 1.25rem;
+    }
+
+    .footer-section h4 {
+        font-size: 1.75rem;
+    }
+    
+    .footer-section p,
+    .footer-section ul,
+    .footer-section .social-icons {
+        font-size: 1.25rem;
+    }
+
+    .footer-bottom {
+        font-size: 1rem;
+    }
+}

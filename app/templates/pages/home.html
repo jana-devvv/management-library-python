@@ -1,5 +1,9 @@
 {% extends "base.html" %}
 
+{% block style %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+{% endblock %}
+
 {% block content %}
 <div class="home-description">
     <h1>Library Management System</h1>
@@ -7,7 +11,7 @@
 </div>
 
 <div class="home-cards">
-    <h3>List Books <a class="btn-add" href="{{ url_for('add_book') }}">Add</a></h3>
+    <h3>List Books <a class="btn btn-sm btn-success" href="{{ url_for('add_book') }}">Add Book</a></h3>
     
     <!-- Search Bar -->
     <form id="home-search" method="GET" action="{{ url_for('home') }}">
@@ -28,9 +32,9 @@
                     <p>Year: {{ book.year }}</p>
                 </div>
                 <div class="card-actions">
-                    <a href="{{ url_for('loan_book', book_id=book.id) }}" class="btn borrow">Loan</a>
-                    <a href="{{ url_for('edit_book', book_id=book.id) }}" class="btn edit">Edit</a>
-                    <a href="{{ url_for('delete_book', book_id=book.id) }}" class="btn delete" onclick="return confirm('Are you sure?')">Delete</a>
+                    <a href="{{ url_for('loan_book', book_id=book.id) }}" class="btn btn-success">Loan</a>
+                    <a href="{{ url_for('edit_book', book_id=book.id) }}" class="btn btn-warning">Edit</a>
+                    <a href="{{ url_for('delete_book', book_id=book.id) }}" class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</a>
                 </div>
             </li>
         {% else %}
@@ -42,11 +46,10 @@
     <div class="pagination">
         <span>Page {{ books.page }} of {{ books.pages }}</span>
         <div class="pagination-links">
-            <!-- Simulasi tombol disabled dengan class -->
             <a href="{{ url_for('home', page=books.prev_num) }}" 
-               class="btn prev {% if not books.has_prev %}disabled{% endif %}">Prev</a>
-            <a href="{{ url_for('home', page=books.next_num) }}" 
-               class="btn next {% if not books.has_next %}disabled{% endif %}">Next</a>
+               class="btn {{ 'btn-disabled' if not books.has_prev else 'btn-info' }}">Prev</a>
+               <a href="{{ url_for('home', page=books.next_num) }}" 
+               class="btn {{ 'btn-disabled' if not books.has_next else 'btn-info' }}">Next</a>
         </div>
     </div>
 </div>

@@ -19,7 +19,7 @@ def home():
     else:
         books = Book.query.paginate(page=page, per_page=5, error_out=False)
 
-    return render_template('home.html', title='Home | JD', books=books, search_query=search_query)
+    return render_template('pages/home.html', title='Home | JD', books=books, search_query=search_query)
 
 @app.route('/add', methods=['GET', 'POST'])
 def add_book():
@@ -35,7 +35,7 @@ def add_book():
         db.session.commit()
         flash('Book added successfully!', 'success')
         return redirect(url_for('home'))
-    return render_template('add_book.html', title='Add Book | JD', form=form)
+    return render_template('book/add_book.html', title='Add Book | JD', form=form)
 
 @app.route('/edit/<int:book_id>', methods=['GET', 'POST'])
 def edit_book(book_id):
@@ -53,7 +53,7 @@ def edit_book(book_id):
     form.title.data = book.title
     form.author.data = book.author
     form.year.data = book.year
-    return render_template('edit_book.html', title='Edit Book | JD', form=form, book=book)
+    return render_template('book/edit_book.html', title='Edit Book | JD', form=form, book=book)
 
 @app.route('/delete/<int:book_id>', methods=['GET', 'POST'])
 def delete_book(book_id):
@@ -68,7 +68,7 @@ def delete_book(book_id):
 @login_required
 def my_loans():
     loans = Loan.query.filter_by(user_id=current_user.id).all()
-    return render_template('my_loans.html', loans=loans, timedelta=timedelta)
+    return render_template('pages/my_loans.html', loans=loans, timedelta=timedelta)
 
 @app.route('/loan/<int:book_id>', methods=['GET', 'POST'])
 @login_required
@@ -80,7 +80,7 @@ def loan_book(book_id):
         db.session.commit()
         flash(f'Book {book.title} was successfully borrowed', 'success')
         return redirect(url_for('home'))
-    return render_template('loan_book.html', book=book)
+    return render_template('book/loan_book.html', book=book)
 
 # Return book
 @app.route('/return/<int:loan_id>', methods=['GET', 'POST'])
@@ -108,7 +108,7 @@ def register():
         db.session.commit()
         flash('Account created successfully', 'success')
         return redirect(url_for('login'))
-    return render_template('register.html', form=form)
+    return render_template('auth/register.html', form=form)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -121,10 +121,10 @@ def login():
             return redirect(url_for('home'))
         else:
             flash('Login failed. Check your credentials!')
-    return render_template('login.html', form=form)
+    return render_template('auth/login.html', form=form)
 
 @app.route('/logout')
 def logout():
     logout_user()
     flash('Logout successfully', 'info')
-    return redirect(url_for('home'))
+    return redirect(url_for('pages/home'))

@@ -1,563 +1,147 @@
-/* ===== Variable Color ===== */
-
-/* Light Mode */
-:root {
-    --primary-color: #1E88E5;
-    --secondary-color: #1565C0;
-    --background-color: #FFFFFF;
-    --main-font-color: #000000;
-    --secondary-font-color: #4A4A4A;
-    --border-color: #E0E0E0;
-}
-
-/* Dark Mode */
-[data-theme="dark"] {
-    --primary-color: #42A5F5;
-    --secondary-color: #1E88E5;
-    --background-color: #121212;
-    --main-font-color: #FFFFFF;
-    --secondary-font-color: #BDBDBD;
-    --border-color: #424242;
-}
-
-/* ===== Reset Spacing ===== */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    background-color: var(--background-color);
-}
-
-.main-content {
-    padding: 0 1rem;
-}
-
-/* ===== NavBar ===== */
-.navbar {
-    background-color: var(--primary-color);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 1.5rem;
-}
-
-/* Logo Brand */
-.navbar .navbar-brand {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 700;
-    font-size: 1.5rem;
-    color: var(--main-font-color);
-}
-
-/* Link */
-.navbar .navbar-nav .nav-links {
-    display: none;
-}
-
-/* Hamburger Button */
-.navbar .navbar-nav .hamburger {
-    display: flex;
-    flex-direction: column;
-    cursor: pointer;
-}
-
-.navbar .navbar-nav .hamburger span {
-    width: 25px;
-    height: 4px;
-    background: var(--main-font-color);
-    margin: 2px 0;
-}
-
-/* ===== Overlay ===== */
-.overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 999;
-    display: none;
-}
-
-.overlay.active {
-    display: block;
-}
-
-/* ==== SideBar ===== */
-.sidebar {
-    position: fixed;
-    top: 0;
-    right: -100%;
-    height: 100%;
-    width: 60%;
-    background: var(--secondary-color);
-    color: var(--main-font-color);
-    padding: 1.5rem;
-    transition: 0.3s ease-in-out;
-    z-index: 1000;
-}
-
-.sidebar.active {
-    right: 0;
-}
-
-.sidebar .sidebar-title {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 700;
-    text-align: center;
-    font-size: 1.5rem;
-}
-
-.sidebar .sidebar-links {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-}
-
-.sidebar .sidebar-links li {
-    list-style: none;
-    font-size: 1.2rem;
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 600;
-}
-
-.sidebar .sidebar-links li:nth-child(4) a {
-    display: inline-block;
-    margin: 1.5rem 0;
-    padding: 0.625rem 1.25rem;
-    color: #FFFFFF;
-    background-color: #ff0d00;
-    border-radius: 5px;
-    font-size: 1rem;
-    text-align: center;
-    transition: background-color 0.3s ease;
-}
-
-.sidebar .sidebar-links li:nth-child(4) a:hover {
-    background-color: #e00b00;
-}
-
-.sidebar .sidebar-links li a {
-    text-decoration: none;
-    color: var(--main-font-color);
-}
-
-/* ===== Home ===== */
-.home-description {
-    margin-top: 1rem;
-}
-
-.home-description h1 {
-    font-family: 'Poppins', sans-serif;
-    font-size: 1.5rem;
-    line-height: 1.75rem;
-    text-align: center;
-    margin-bottom: 0.5rem;
-}
-
-.home-description p {
-    font-family: 'Open Sans', sans-serif;
-    font-size: 0.75rem;
-    text-align: center;
-}
-
-.home-cards {
-    margin-top: 3rem;
-}
-
-.home-cards h3 {
-    font-family: 'Poppins', sans-serif;
-    font-size: 1.25rem;
-    margin-bottom: 1rem;
-}
-
-.home-cards h3 .btn-add {
-    display: inline-block;
-    padding: 0.25rem 1rem;
-    color: #FFFFFF;
-    background-color: #00ff4c;
-    border-radius: 5px;
-    font-size: 1rem;
-    text-align: center;
-    text-decoration: none;
-    transition: background-color 0.3s ease;
-}
-
-#home-search .search-bar {
-    display: flex;
-    align-items: center;
-    width: 100%;
+/* Styling untuk form container */
+#form-add {
     max-width: 400px;
-    background-color: var(--background-color);
-    border: 1px solid var(--border-color);
-    border-radius: 1.5rem;
-    padding: 0.3rem 0.625rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-#home-search .search-bar input {
-    flex: 1;
-    border: none;
-    outline: none;
-    padding: 0.5rem 0.625rem;
-    font-size: 1rem;
-    border-radius: 20px;
-}
-
-#home-search .search-bar button {
-    background-color: #6200ea;
-    color: white;
-    border: none;
-    outline: none;
-    padding: 0.5rem 1.25rem;
-    margin-left: -2.5rem;
-    border-radius: 20px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
-}
-
-/* Cards */
-.card-list {
-    list-style-type: none;
-    display: grid;
-    gap: 1.25rem;
-    grid-template-columns: repeat(1, 1fr);
-    width: 100%;
-    /* max-width: 1200px; */
-    margin-top: 2rem;
-}
-
-.card {
-    background-color: var(--background-color);
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
     border: 1px solid #ddd;
     border-radius: 8px;
-    padding: 1rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 200px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
 }
 
-.card .card-info h3 {
+/* Styling untuk judul form */
+.title-add {
     font-family: 'Poppins', sans-serif;
     font-weight: 700;
-    line-height: 2.5rem;
-    margin: 0;
-    font-size: 1.25rem;
-    color: var(--main-font-color);
-}
-
-.card .card-info p {
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 400;
-    line-height: 1rem;
-    margin: 5px 0;
-    color: var(--secondary-font-color);
-}
-
-.card .card-actions {
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 600;
-    margin-top: auto;
-    display: flex;
-    gap: 0.625rem;
-}
-
-.btn {
-    text-decoration: none;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    font-size: 1rem;
     text-align: center;
-    display: inline-block;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.btn.borrow {
-    background-color: #4caf50;
-    color: white;
-}
-
-.btn.borrow:hover {
-    background-color: #45a049;
-}
-
-.btn.edit {
-    background-color: #2196f3;
-    color: white;
-}
-
-.btn.edit:hover {
-    background-color: #1976d2;
-}
-
-.btn.delete {
-    background-color: #f44336;
-    color: white;
-}
-
-.btn.delete:hover {
-    background-color: #d32f2f;
-}
-
-.empty {
-    text-align: center;
-    color: var(--secondary-font-color);
-    font-size: 1rem;
-    margin-top: 1.25rem;
-}
-
-/* Pagination */
-.pagination {
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 400;
-    margin-top: 1.25rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 0.625rem;
-}
-
-.pagination .btn {
-    background-color: #ddd;
     color: #333;
+    margin-bottom: 20px;
+    font-size: 24px;
 }
 
-.pagination .btn:hover {
-    background-color: #bbb;
+/* Styling untuk label */
+#form-add p label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #555;
+}
+
+/* Styling untuk input field */
+#form-add p input[type="text"],
+#form-add p input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+/* Fokus pada input */
+#form-add p input:focus {
+    border-color: #5b9bd5;
+    outline: none;
+    box-shadow: 0 0 5px rgba(91, 155, 213, 0.5);
+}
+
+/* Styling untuk tombol submit */
+#form-add p input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #5b9bd5;
+    border: none;
+    border-radius: 4px;
     color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-/* Disabled Button Styles */
-.pagination .btn.disabled {
-    background-color: #f5f5f5;
-    color: #aaa;
-    pointer-events: none; /* Menonaktifkan interaksi */
-    cursor: not-allowed;
+#form-add p input[type="submit"]:hover {
+    background-color: #417cb3;
 }
 
-/* ===== Footer ===== */
-/* Footer Styles */
-.footer {
-    background-color: #222;
-    color: #fff;
-    padding: 20px 15px;
-    font-size: 0.85rem;
-    margin-top: 2rem;
+
+
+/* Styling untuk container */
+#form-borrow {
+    max-width: 400px;
+    margin: 50px auto 60px;
+    padding: 20px;
+    background-color: #fdfdfd;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+    text-align: center;
 }
 
-.footer-container {
-    display: grid;
-    gap: 20px;
-    grid-template-columns: 1fr; /* Default: Single column for small screens */
-    max-width: 1200px;
-    margin: 0 auto;
+/* Styling untuk judul dan teks */
+.modal-borrow {
+    text-align: center;
+    margin-top: 50px;
 }
 
-/* Footer Sections */
-.footer-section {
+.modal-borrow h2 {
+    text-align: center;
+    font-size: 24px;
+    color: #333;
     margin-bottom: 20px;
 }
 
-.footer-section h4 {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 700;
-    font-size: 1rem;
-    margin-bottom: 0.625rem;
-    color: #f3f3f3;
+.modal-borrow p {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 20px;
 }
 
-.footer-section p,
-.footer-section ul,
-.footer-section .social-icons {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 400;
+/* Highlight teks buku */
+.modal-borrow p strong {
+    color: #007BFF;
+    font-weight: bold;
 }
 
-.footer-section ul li {
-    margin: 5px 0;
+/* Styling tombol submit */
+#form-borrow button {
+    padding: 10px 20px;
+    background-color: #28a745;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.footer-section ul li a,
-.footer-section .social-icons a {
-    color: #ccc;
-    text-decoration: none;
-    transition: color 0.3s;
+/* Hover dan fokus pada tombol */
+#form-borrow button:hover {
+    background-color: #218838;
+    transform: translateY(-2px);
 }
 
-.footer-section ul li a:hover,
-.footer-section .social-icons a:hover {
-    color: #fff;
+#form-borrow button:active {
+    background-color: #1e7e34;
+    transform: translateY(0);
 }
 
-/* Social Icons */
-.social-icons {
-    display: flex;
-    gap: 10px;
-}
-
-/* Footer Bottom */
-.footer-bottom {
-    text-align: center;
-    margin-top: 20px;
-    border-top: 1px solid #444;
-    padding-top: 10px;
-    font-size: 0.75rem;
-    color: #aaa;
-}
-
-.footer-bottom p {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 400;
-}
-
-/* ===== Responsive Breakpoints ===== */
-
-/* Tablet 768px */
-@media (min-width: 768px) {
-    .navbar .navbar-nav {
-        display: flex;
+/* Styling tambahan untuk responsivitas */
+@media (max-width: 400px) {
+    #form-borrow {
+        padding: 15px;
     }
 
-    .navbar .navbar-nav .nav-links {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        column-gap: 1.5rem;
+    h2 {
+        font-size: 20px;
     }
 
-    .navbar .navbar-nav .nav-links li {
-        font-family: 'Open Sans', sans-serif;
-        font-weight: 600;
-        list-style: none;
+    p {
+        font-size: 14px;
     }
 
-    .navbar .navbar-nav .nav-links .active {
-        border-bottom: 5px solid var(--main-font-color);
-    }
-
-    .navbar .navbar-nav .nav-links li a {
-        font-size: 1rem;
-        text-decoration: none;
-        color: var(--main-font-color);
-    }
-
-    .navbar .navbar-nav .nav-links li:nth-child(4) a {
-        display: inline-block;
-        padding: 0.625rem 1.25rem;
-        color: #FFFFFF;
-        background-color: #ff0d00;
-        border-radius: 5px;
-        font-size: 1rem;
-        text-align: center;
-        transition: background-color 0.3s ease;
-    }
-    
-    .navbar .navbar-nav .nav-links li:nth-child(4) a:hover {
-        background-color: #e00b00;
-    }
-
-    .navbar .navbar-nav .hamburger {
-        display: none;
-    }
-
-    .sidebar {
-        right: -100% !important;
-    }
-
-    .overlay {
-        display: none !important;
-    }
-
-    /* ===== Home Page ===== */
-    .home-description {
-        margin-top: 2rem;
-    }
-
-    .home-description h1 {
-        font-size: 2.5rem;
-        line-height: 2rem;
-    }
-
-    .home-description p {
-        font-size: 1rem;
-    }
-
-    .home-cards h3 {
-        font-size: 2rem;
-    }
-
-    .home-cards h3 .btn-add {
-        font-size: 1.5rem;
-    }
-
-    .card .card-info h3 {
-        margin: 0;
-        font-size: 1.5rem;
-        color: var(--main-font-color);
-    }
-    
-    .card .card-info p {
-        font-size: 1rem;
-        margin: 5px 0;
-        color: var(--secondary-font-color);
-    }
-    
-    .card .card-actions {
-        margin-top: auto;
-        display: flex;
-        gap: 0.625rem;
-    }
-
-    .card-list {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .footer-container {
-        grid-template-columns: repeat(3, 1fr); /* 3 columns for larger screens */
-    }
-
-    /* Footer Bottom */
-    .footer-bottom {
-        font-size: 1rem;
-    }
-}
-
-/* Dekstop 1024px */
-@media (min-width: 1024px) {
-    .navbar .navbar-nav .nav-links li a {
-        font-size: 1.5rem;
-    }
-
-    .navbar .navbar-nav .nav-links li:nth-child(4) a {
-        font-size: 1.5rem;
-    }
-
-    .card-list {
-        grid-template-columns: repeat(3, 1fr);
-    }
-
-    .footer-section h4 {
-        font-size: 2rem;
-    }
-    
-    .footer-section p,
-    .footer-section ul,
-    .footer-section .social-icons {
-        font-size: 1rem;
-    }
-
-    .footer-bottom {
-        font-size: 1.25rem;
+    #form-borrow button {
+        width: 100%;
     }
 }
