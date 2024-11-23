@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block style %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/about.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="about-contact">
+    <!-- About Section -->
+    <section class="about">
+        <h1 class="section-title">About Us</h1>
+        <p class="section-description">
+            The Library Management System is a modern tool designed to help libraries of all sizes organize, manage, and simplify their operations. 
+            It provides efficient solutions for tracking books, managing borrowers, and ensuring a seamless library experience.
+        </p>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact">
+        <h1 class="section-title">Contact Us</h1>
+        <ul class="contact-info">
+            <li><strong>Address:</strong> West Berangas, Banjarmasin, South Kalimantan, Indonesian</li>
+            <li><strong>Email:</strong> jasendev@gmail.com</li>
+            <li><strong>Phone:</strong> (+62) 887 - 1234 - 5678</li>
+            <li><strong>Github:</strong> <a href="https://github.com/jana-devvv">jana-devvv</a></li>
+        </ul>
+    </section>
+</div>
+{% endblock %}

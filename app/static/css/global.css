@@ -40,6 +40,9 @@ html, body {
 body {
     background-color: var(--bg-light-color);
     font-size: 16px;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    height: 100vh;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -54,6 +57,10 @@ p, a, li, span, div, input {
 
 .main-content {
     padding: var(--space-2) var(--space-4);
+}
+
+.no-scroll {
+    overflow: hidden;
 }
 
 /* ==================== BUTTON ==================== */
@@ -156,6 +163,23 @@ p, a, li, span, div, input {
     margin: 2px 0;
 }
 
+/* PROFILE */
+.profile-circle {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.profile-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+
 /* ==================== OVERLAY ==================== */
 .overlay {
     position: fixed;
@@ -176,12 +200,11 @@ p, a, li, span, div, input {
 .sidebar {
     position: fixed;
     top: 0;
-    right: -100%;
+    /* right: -100%; */
+    right: 0;
     height: 100%;
     width: 60%;
-    background: var(--primary-color);
-    color: var(--text-light-color);
-    /* padding: 0 var(--space-6); */
+    background: var(--dark-color);
     transition: 0.5s ease-in-out;
     z-index: 1000;
 }
@@ -190,45 +213,59 @@ p, a, li, span, div, input {
     right: 0;
 }
 
-/* Title */
-.sidebar .sidebar-title {
-    text-align: center;
-    font-size: 1.5rem;
-}
-
-/* Links */
-.sidebar .sidebar-links {
+.sidebar .profile {
+    padding: var(--space-4);
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
+    align-items: center;
+    column-gap: var(--space-4);
 }
 
-.sidebar .sidebar-links li {
+.sidebar .profile img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+
+.sidebar .sidebar-content {
+    padding: var(--space-0) var(--space-5);
+}
+
+.sidebar .sidebar-content .sidebar-title {
+    text-align: center;
+    line-height: var(--space-3);
+    color: var(--secondary-color);
+    font-size: 1.25rem;
+    opacity: 0.9;
+}
+
+.sidebar .sidebar-content .sidebar-links {
+    padding-left: 0;
     list-style: none;
-    font-size: 1.2rem;
-}
-
-.sidebar .sidebar-links li:nth-child(4) a {
-    display: inline-block;
-    margin: 1.5rem 0;
-    padding: 0.625rem 1.25rem;
-    color: #FFFFFF;
-    background-color: #ff0d00;
-    border-radius: 5px;
-    font-size: 1rem;
     text-align: center;
-    transition: background-color 0.3s ease;
 }
 
-.sidebar .sidebar-links li:nth-child(4) a:hover {
-    background-color: #e00b00;
+.sidebar .sidebar-content .sidebar-links li a {
+    margin: var(--space-3) var(--space-0);
 }
 
-.sidebar .sidebar-links li a {
+.sidebar .sidebar-content .sidebar-links li a {
     text-decoration: none;
-    color: var(--text-light-color);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-dark-color);
 }
+
+.sidebar .sidebar-content .sidebar-links li a.active {
+    display: block;
+    padding: var(--space-2) var(--space-0);
+    background-color: var(--primary-color);
+    /* color: var(--text-light-color); */
+}
+
+.sidebar .sidebar-content .sidebar-links li:nth-child(3) a {
+    display: block;
+}
+
 
 /* ==================== FOOTER ==================== */
 .footer {
@@ -305,6 +342,10 @@ p, a, li, span, div, input {
         padding: var(--space-3) var(--space-6);
     }
 
+    .navbar {
+        padding: var(--space-1) var(--space-5);
+    }
+
     .navbar .navbar-brand {
         font-size: 1.25rem;
     }    
@@ -321,7 +362,12 @@ p, a, li, span, div, input {
         list-style: none;
     }
 
-    .navbar .navbar-nav .nav-links li a {
+    .navbar .navbar-nav .nav-links li:nth-child(3) {
+        position: relative;
+        text-align: left;
+    }
+
+    .navbar .navbar-nav .nav-links > li a {
         position: relative;
         padding: var(--space-2) var(--space-0);
         font-weight: 600;
@@ -331,7 +377,7 @@ p, a, li, span, div, input {
         color: var(--text-dark-color);
     }
 
-    .navbar .navbar-nav .nav-links li:nth-child(4) a {
+    .navbar .navbar-nav .nav-links li:nth-child(3) a {
         padding: var(--space-3) var(--space-5);
     }
 
@@ -345,6 +391,10 @@ p, a, li, span, div, input {
         transition: width 0.3s ease;
     }
 
+    .navbar .navbar-nav .nav-links li a.active {
+        color: #FFFFFF;
+    }
+
     .navbar .navbar-nav .nav-links li a.active::after {
         width: 100%;
         background-color: var(--secondary-color);
@@ -352,6 +402,30 @@ p, a, li, span, div, input {
 
     .navbar .navbar-nav .hamburger {
         display: none;
+    }
+
+    .dropdown-menu {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        padding: 0;
+        background-color: var(--dark-color);
+        border: 1px solid var(--border-color);
+        border-radius: 5px;
+        width: 150px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        display: none;
+        z-index: 1000;
+        list-style: none;
+    }
+    
+    .navbar .navbar-nav .nav-links li .dropdown-menu li a {
+        display: block;
+        text-decoration: none;
+    }
+
+    .navbar .navbar-nav .nav-links li .dropdown-menu li a:active {
+        color: var(--secondary-color);
     }
 
     .sidebar {
@@ -371,6 +445,10 @@ p, a, li, span, div, input {
 @media (min-width: 1024px) {
     .main-content {
         padding: var(--space-4) var(--space-8);
+    }
+
+    .navbar {
+        padding: var(--space-1) var(--space-6);
     }
 
     .navbar .navbar-brand {

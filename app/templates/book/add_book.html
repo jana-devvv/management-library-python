@@ -1,9 +1,12 @@
 {% extends "base.html" %}
 
+{% block style %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/book.css') }}">
+{% endblock %}
 
 {% block content %}
-<h2 class="title-add">Add New Book</h2>
-<form id="form-add" method="POST" action="{{ url_for('add_book') }}">
+<h2 class="title-form">Add New Book</h2>
+<form id="bookForm" method="POST" action="{{ url_for('add_book') }}">
     {{ form.hidden_tag() }}
     <p>
         {{ form.title.label }}

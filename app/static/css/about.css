@@ -1,0 +1,70 @@
+.about-contact {
+    padding: var(--space-5);
+}
+
+.section-title {
+    font-size: 1.8rem;
+    margin-bottom: var(--space-4);
+    text-align: center;
+    color: var(--secondary-color);
+}
+
+.section-description {
+    font-size: 1rem;
+    line-height: var(--space-5);
+    margin: var(--space-0) auto;
+    max-width: 500px;
+    color: var(--text-light-color);
+    text-align: center;
+    opacity: 0.8;
+}
+
+.contact-info {
+    list-style: none;
+    padding: 0;
+    margin: var(--space-5) auto;
+    max-width: 500px;
+    font-size: 1rem;
+    line-height: var(--space-5);
+    color: var(--text-light-color);
+    opacity: 0.8;
+}
+
+.contact-info li {
+    margin-bottom: var(--space-3);
+}
+
+.contact-info a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.contact-info a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive design */
+/* Tablet */
+@media (min-width: 768px) {
+    .section-title {
+        font-size: 2.2rem;
+    }
+    .section-description, .contact-info {
+        font-size: 1.1rem;
+        max-width: 600px;
+    }
+}
+
+/* Laptop and Desktop */
+@media (min-width: 1024px) {
+    .about-contact {
+        padding: var(--space-5);
+    }
+    .section-title {
+        font-size: 2.8rem;
+    }
+    .section-description, .contact-info {
+        font-size: 1.2rem;
+        max-width: 800px;
+    }
+}

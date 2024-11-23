@@ -19,7 +19,15 @@ def home():
     else:
         books = Book.query.paginate(page=page, per_page=5, error_out=False)
 
-    return render_template('pages/home.html', title='Home | JD', books=books, search_query=search_query)
+    return render_template('pages/home.html', title='Home | JD Library', books=books, search_query=search_query)
+
+@app.route('/about')
+def about():
+    return render_template('pages/about.html', title='About | JD Library')
+
+@app.route('/contact')
+def contact():
+    return render_template('pages/contact.html', title='Contact | JD Library')
 
 @app.route('/add', methods=['GET', 'POST'])
 def add_book():
@@ -70,7 +78,7 @@ def my_loans():
     loans = Loan.query.filter_by(user_id=current_user.id).all()
     return render_template('pages/my_loans.html', loans=loans, timedelta=timedelta)
 
-@app.route('/loan/<int:book_id>', methods=['GET', 'POST'])
+@app.route('/loan/<int:book_id>', methods=['POST'])
 @login_required
 def loan_book(book_id):
     book = Book.query.get_or_404(book_id)
@@ -80,7 +88,6 @@ def loan_book(book_id):
         db.session.commit()
         flash(f'Book {book.title} was successfully borrowed', 'success')
         return redirect(url_for('home'))
-    return render_template('book/loan_book.html', book=book)
 
 # Return book
 @app.route('/return/<int:loan_id>', methods=['GET', 'POST'])
@@ -127,4 +134,4 @@ def login():
 def logout():
     logout_user()
     flash('Logout successfully', 'info')
-    return redirect(url_for('pages/home'))
+    return redirect(url_for('home'))

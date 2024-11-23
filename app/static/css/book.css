@@ -1,0 +1,65 @@
+.main-content {
+    height: 100%;
+}
+
+#bookForm {
+    max-width: 400px;
+    margin: var(--space-10) auto;
+    padding: var(--space-5);
+    background-color: var(--bg-light-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Styling untuk judul form */
+.title-form {
+    text-align: center;
+    color: var(--text-light-color);
+    margin-bottom: var(--space-5);
+    font-size: 1.5rem;
+}
+
+/* Styling untuk label */
+#bookForm p label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: var(--space-2);
+    color: var(--text-light-color);
+}
+
+/* Styling untuk input field */
+#bookForm p input[type="text"],
+#bookForm p input[type="number"] {
+    width: 100%;
+    padding: var(--space-3);
+    margin-bottom: var(--space-4);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 0.825rem;
+}
+
+/* Fokus pada input */
+#bookForm p input:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 5px rgba(57, 159, 255, 0.5);
+}
+
+/* Styling untuk tombol submit */
+#bookForm p input[type="submit"] {
+    width: 100%;
+    padding: var(--space-3);
+    background-color: var(--primary-color);
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#bookForm p input[type="submit"]:hover {
+    background-color: #4e41b3;
+}

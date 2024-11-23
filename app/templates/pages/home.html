@@ -7,7 +7,7 @@
 {% block content %}
 <div class="home-description">
     <h1>Library Management System</h1>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis provident architecto enim quidem cumque blanditiis aperiam, voluptatem dolorum maxime inventore error. Fuga nam dicta corporis dolore dolores vel! Tenetur, vitae!</p>
+    <p>A Library Management System (LMS) is software that helps manage library resources and track book loans. It simplifies tasks like borrowing, returns, and inventory management.</p>
 </div>
 
 <div class="home-cards">
@@ -32,9 +32,9 @@
                     <p>Year: {{ book.year }}</p>
                 </div>
                 <div class="card-actions">
-                    <a href="{{ url_for('loan_book', book_id=book.id) }}" class="btn btn-success">Loan</a>
+                    <button data-id="{{ book.id }}" id="borrowBook" class="open-modal btn btn-success">Loan</button>
                     <a href="{{ url_for('edit_book', book_id=book.id) }}" class="btn btn-warning">Edit</a>
-                    <a href="{{ url_for('delete_book', book_id=book.id) }}" class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</a>
+                    <button data-id="{{ book.id }}" id="deleteBook" class="open-modal btn btn-danger">Delete</button>
                 </div>
             </li>
         {% else %}
@@ -52,5 +52,20 @@
                class="btn {{ 'btn-disabled' if not books.has_next else 'btn-info' }}">Next</a>
         </div>
     </div>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span id="closeModal" class="close">&times;</span>
+            <p id="textModal" class="modal-text"></p>
+            <form id="modalForm" method="POST">
+                <button type="submit" class="btn btn-success" id="confirmYes">Yes</button>
+                <button type="button" class="btn btn-danger" id="confirmNo">No</button>
+            </form>
+        </div>
+    </div>
 </div>
+{% endblock %}
+
+{% block script %}
+<script src="{{ url_for('static', filename='js/home.js') }}"></script>
 {% endblock %}

@@ -26,7 +26,7 @@ class Loan(db.Model):
     loan_duration = 7
 
     user = db.relationship('User', backref=db.backref('loans', lazy=True))
-    book = db.relationship('Book', backref=db.backref('loans', lazy=True))
+    book = db.relationship('Book', backref=db.backref('loans', lazy=True, cascade='all, delete'))
 
     def __repr__(self):
         return f"Loan('{self.id}', '{self.book.title}', '{self.user.username}', '{self.loan_date}')"

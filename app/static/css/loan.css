@@ -1,0 +1,85 @@
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+/* Title Styling */
+.container h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-align: center;
+    color: var(--secondary-color);
+}
+
+/* Loan List Styling */
+.container ul {
+    list-style: none;
+    padding: 0;
+}
+
+.container ul li {
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Book Title Styling */
+.container ul li strong {
+    font-size: 1.2rem;
+    color: #333;
+}
+
+/* Status Styling */
+.container ul li p {
+    font-size: 1rem;
+    color: #555;
+    margin: 0;
+}
+
+/* Link Styling */
+.container ul li a {
+    text-decoration: none;
+    font-weight: bold;
+    color: #4A90E2;
+    align-self: flex-start;
+}
+
+.container ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Empty List Styling */
+.container ul li.empty {
+    text-align: center;
+    color: #888;
+    font-style: italic;
+}
+
+/* Responsiveness */
+@media (max-width: 600px) {
+    .container {
+        padding: 10px;
+    }
+
+    .container h2 {
+        font-size: 1.5rem;
+    }
+
+    .container ul li {
+        font-size: 0.9rem;
+    }
+
+    .container ul li a {
+        font-size: 0.9rem;
+    }
+}
